@@ -1,9 +1,9 @@
 # SQL문법
 
 ## Datatpye(크기)
-- 숫자 : NUMBER(자릿수,max 38자리)
-- 고정길이 문자 : CHAR(max 2000byte) -> Update시 편이
-- 가변길이 문자 : VARCHAR2(한글 1글자 - 3btye,max 4000byte) -> Update시 불편
+- 숫자 : NUMBER(자릿수,소수점 자릿수)-max 38자리
+- 고정길이 문자 : CHAR - max 2000byte -> Update시 편이
+- 가변길이 문자 : VARCHAR2 - 한글 1글자 : 3btye,max 4000byte -> Update시 불편
     + 남은 공간을 어떤식으로 처리하느냐에 따라 달라짐(char는 공백이 남아있고, varchar는 공백을 반납)
 - 날짜 : DATE
 - 빈 공간을 허용 하지 않으면 N.N(Not Null) - Mandatory(필수)
