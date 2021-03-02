@@ -48,7 +48,10 @@
     - MODIFY : 변경(FIELD속성)
         - NOT NULL 인상태에서 NOT NULL 추가하여 코드작성하면 에러
     - DROP : 삭제(FIELD, KEY, CHECK)
-- DROP
+- DROP : 데이터 삭제 및 구조 삭제
+    - ROLLBACK 불가
+- TRUNCATE : 데이터 삭제
+    - ROLLBACK 불가
 - 오라클에서는 DDL 의경우 자동 commit
 
 ### INDEX
@@ -63,14 +66,16 @@
     - GROUP BY <열목록> : 집계할 때 사용(SUM,AVG,MAX,MIN,COUNT)
     - HAVING<검색조건> : 집계후 생섯
     - ORDER BY <열목록> : 정렬
+    - 애스터리스크(*) 는 모든 속성
+    - ALIAS : 속성뒤에 AS (속성명) 으로 컬럼헤딩을 (속성명)으로 변경 or "속성명"으로 AS를 생략해도 가능 or AS "" 생략가능
 - UPDATE : 데이터 수정
     - UPDATE <테이블명 >SET <필드명1 = 값1, 필드명2 = 값2...>WHERE <검색조건>
     - UPDATE : 갱신하고자 하는 테이블 지정
     - SET : 새로운 데이터 갱신
-    - WHERE : 갱신하기 원하는 데이터의 검색 조건
+    - WHERE : 갱신하기 원하는 데이터의 검색 조건(행 필터)
     - 반드시 WHERE 조건 넣기
-- DELETE
-
+- DELETE : 데이터 삭제
+    - ROLLBAKC 가능
 
 
 ### CRUD
