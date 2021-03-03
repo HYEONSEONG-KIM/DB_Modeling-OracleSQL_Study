@@ -64,7 +64,7 @@
 - SELECT : 데이터 조회
     - SELCET {DISTINCT-중복제거} <데이터목록> FROM <테이블 목록> WHERE <검색조건>;
     - GROUP BY <열목록> : 집계할 때 사용(SUM,AVG,MAX,MIN,COUNT)
-    - HAVING<검색조건> : 집계후 생섯
+    - HAVING<검색조건> : 집계후 생성
     - ORDER BY <열목록> : 정렬
     - 애스터리스크(*) 는 모든 속성
     - ALIAS : 속성뒤에 AS (속성명) 으로 컬럼헤딩을 (속성명)으로 변경 or "속성명"으로 AS를 생략해도 가능 or AS "" 생략가능
@@ -83,3 +83,35 @@
 - R : READ (SELECT)
 - U : UPDATE(UPDATE)
 - D : DELETE(DELETE)
+
+## 데이터 정렬
+- ROW를 Sort하고자 하면 ORDER BY 절을 사용
+- ASC(ASCENDING) : ORDER BY (정렬하고자 하는 컬럼명) ASC -> 오름차순 정렬
+- DESC(DESCENDING) : ORDER BY (정렬하고자 하는 컬럼명) DESC -> 내림차순 정렬
+- DEAULT 는 오름차순 정렬
+- ALIAS로 정렬 가능
+- 입력한 컬럼의 번호로 정렬 가능
+    - EX)SELECT MEM_ID, MEM_NAME FROM MEMBER ORDER BY 2 ASC; => 2번째인 MEM_NAME으로 오름차순 정렬
+- ORDER BY 1,2 => 1의 정렬된 값이 동일 할때 같은 그룹끼리 2의 값으로 2차로 정렬
+- 중복제거후 정렬 하고 싶으면 DISTINCT 함께 사용
+    - SELECT DISTINCT 1,2 => 1+2 로 보고 중복 제거
+- 정렬은 항상 맨마지막
+
+## WHERE
+- SELECT시 비교연산,논리연산을 통해 검색 조건을 설정(행,ROW)
+- 비교 연산자
+    - = 같다
+    - <>, != 같지않다
+    - <,> 크다 작다
+    - <=,>= 크거나 같다 작거나 같다
+- 논리 연산자
+    - AND 모두가 참이어야 참(점으로 표기)
+    - OR 하나라도 참이면 참 (+로 표기)
+    - NOT(조건) 조건이 거짓이면 참(위에 선하나)
+    - 우선순위 : (), NOT, AND, OR
+- IN : 질의 탐색을 위해 사용될 둘이상의 표현식을 지정(OR연산자가 여러개)
+    - EX)회원의 아이디가 C1 C4 C6 인 회원을 찾음 -> WHERE MEM_ID IN('C1', 'C4', 'C6');
+- (NOT A) AND (NOT B) 와 NOT(A OR B)는 같음(드모르간의 정리)
+- 연산시 자료형이 같아야 함
+- 만약 문자형 (비교연산) 숫자 를 비교하면 문자형이 숫자형으로 자동 형변환
+- 서브쿼리 : 쿼리안에 사용된 또라는 select문
