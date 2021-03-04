@@ -96,9 +96,12 @@
 - 중복제거후 정렬 하고 싶으면 DISTINCT 함께 사용
     - SELECT DISTINCT 1,2 => 1+2 로 보고 중복 제거
 - 정렬은 항상 맨마지막
+- Alias 는 정렬에서만 사용가능
 
 ## WHERE
 - SELECT시 비교연산,논리연산을 통해 검색 조건을 설정(행,ROW)
+
+## 연산자
 - 비교 연산자
     - = 같다
     - <>, != 같지않다
@@ -109,9 +112,64 @@
     - OR 하나라도 참이면 참 (+로 표기)
     - NOT(조건) 조건이 거짓이면 참(위에 선하나)
     - 우선순위 : (), NOT, AND, OR
-- IN : 질의 탐색을 위해 사용될 둘이상의 표현식을 지정(OR연산자가 여러개)
-    - EX)회원의 아이디가 C1 C4 C6 인 회원을 찾음 -> WHERE MEM_ID IN('C1', 'C4', 'C6');
-- (NOT A) AND (NOT B) 와 NOT(A OR B)는 같음(드모르간의 정리)
+    - (NOT A) AND (NOT B) 와 NOT(A OR B)는 같음(드모르간의 정리)
+    - IN : 질의 탐색을 위해 사용될 둘이상의 표현식을 지정(OR연산자가 여러개)
+        - EX)회원의 아이디가 C1 C4 C6 인 회원을 찾음 -> WHERE MEM_ID IN('C1', 'C4', 'C6');
 - 연산시 자료형이 같아야 함
 - 만약 문자형 (비교연산) 숫자 를 비교하면 문자형이 숫자형으로 자동 형변환
 - 서브쿼리 : 쿼리안에 사용된 또라는 select문
+
+## 기타 연산자
+- BETWEEN : 범위내에 모든 값을 탐색
+    - EX) WHERE (컬럼명) BETWEEN A AND B => A와B 사이의 값 모두 출력
+    - NOT 사용시 전체 구문앞에 써도 되고, NOT BWTWEEN으로 써도 됨
+- LIKE : 컬럼 값을 지정된 패턴과 비교하여 문자형태가 같은 ROW를 검색
+    - LKIE와 함께 쓰인 % : 와일드 카드(%를 문자로 인식하지 않음) -> % : 여러글자, _ : 한 글자
+    - %AB% : 위치에 상관없이 AB 글자가 모두 포함
+    - A% :  앞에 첫 글자가 A(A로 시작하는 문자)
+    - %A : 마지막 글자가 A(A로 끝나는 문자)
+    - _A% : 앞글자 공백후 A
+    - A_ : A로 시작하는 두글자 문자(찾고자 하는 데이터가 두 글자 이상이면 검색 되지 않음)
+- & 데이터에 입력하려고 하면 주소 연산자를 참조하라고 함 -> CHR(아스키코드 표 번호) || '데이터'로 입력가능
+    - 번호 검색 : SELECT ASCII ('원하는 문자') FROM DUAL;
+    - 문자 검색 : SELECT CHR(번호) FROM DUAL;
+    - DUAL : 가상의 테이블, DBMS에서 테이블 없이 확인하고자 하는 작업을 수행할때 사용
+
+## 함수
+- 미리 만들어 놓은 작은 프로그램으로 혼자서 실행되지 않고 다른 함수에 의해서 호출을 받아야만 실행
+- 단일행(Single-row)함수
+    - 테이블에 저장되어있는 개별 행을 대상으로 함수를 적용하여 하나의 값 반환
+    - SELECT, WHERE, ORDER BY 절에서 사용
+    - 함수를 중접하여 사용가능
+- 복수행(Multiple-row)함수
+    - 여러 행을 그룹화하여 그룹별로 결과를 처리하여 하나의 결과 반환
+    - 그룹화하고자 하는 경우 GROUP BY절 사용
+
+### 문자열 함수
+- C || C : 둘 이상의 문자열을 연결하는 결합 연산자
+- CONCAT : 두 문자열을 연결하여 반환
+    - ex)SELECT CONCAT('My Name is ',MEM_NAME) FROM MEMBER;
+    - => My Name is 김은대
+- CHR, ASCII : ASCII값을 문자로, 문자를 ASCII값으로 반환
+    - ex) SELECT CHR(65) "CHR", ASCII('ABC') "ASCII" FROM DUAL;
+    - SELECT CHR(75) "CHR", ASCII('K') "ASCII" FROM DUAL;
+    - =>K	75
+- LOWER : 해당 문자나 문자열을 소문자로 반환
+- UPPER : 대문자로 반환
+- INITCAP : 첫 글자를 대문자로 나머지는 소문자로 반환 
+    - SELECT LOWER('DATA manipulcation Language') AS "LOWER", UPPER('DATA manipulcation Language') AS "UPPER", INITCAP('DATA manipulation Language') AS "INITCAP" FROM DUAL;
+    - =>Lower : data manipulcation language
+    - =>Upper : DATA MANIPULCATION LANGUAGE
+    - =>Initcap : Data Manipulation Language
+- LPAD, RPAD (C1, n, C2) : 지정된 길이 n에서 C1을 채우고 남은 공간을 C2로 채워서 반환(L-Left, R-Right)
+    - SELECT LPAD('Java',10,'*') "LPAD", RPAD('Java',12,'^') "RPAD" FROM    DUAL;
+     - =>LPAD : ******Java
+     - =>Rpad : Java^^^^^^^^
+- LTRIM, RTRIM(C1,C2) : LTRIM은 좌측 RTRIM은 우측의 공백문자를 제거, C2문자가 있는 경우 일치하는 문자를 제거
+- TRIM : 공백을 제거
+    - TRIM(LEADING 'a' FROM '..') -> 앞의 문자와 공백 제거
+    - BOTH : 양쪽 제거
+    - TRAILING : 뒤의 문자 제거
+- SUBSTR(C,M,N) : 문자열의 일부분을 선택, M - 시작점(음수면 뒤에서부터), N - 선택할 길이(생략시 끝까지), C - 글자수
+    - SELECT  MEM_ID 회원ID,MEM_NAME 회원명,SUBSTR(MEM_NAME,1,1) 성 FROM MEMBER; => 회원이름과 성만 출력
+    - SELECT  PROD_ID 상품ID,PROD_NAME 상품명 FROM PROD WHERE  SUBSTR(PROD_NAME, 4,2) = '칼라'; => 상품테이블의 상품명의 4번째 자리 부터 2글자가 '칼라' 인 상품의 코드와 상품명 출력
