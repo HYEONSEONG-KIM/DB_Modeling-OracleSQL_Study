@@ -200,3 +200,34 @@
     - SYSDATE +- 1/24 => 1시간 전후
     - 일반 문자형을 날짜형으로 -> TO_DATE(문자)
     - 현재 날짜와 특정 날짜를 연산시 일수가 계산
+- ADD_MONTHS(date,n) : n월 더하기
+- LAST_DAY(date) : 해당 월의 마지막 날짜
+- NEXT_DAY(date, 요일) : 오늘 날짜를 기준으로 다가오는 (요일) 날짜
+- ROUND(date, fmt) : fmt(YEAR, MONTHM, DA월, 월요일...)를 기준으로 날짜를 반올림
+- TRUNC(date, fmt) : fmt를 기준으로 날짜를 버림
+- MONTHS_BETWEEN(date1, date2) : date1 과  date2의 사이는 몇개월 차이인지 계산
+    - FORMAT : 년도 YYYY, 월 MM, 일 DD, 시간 HH, 초 SS -> YYYY-MM-DD-HH-SS
+- EXTRACT(fmt FROM date) : 날짜에서 필요한 부분만 추출
+    - SYSTIMESTAMP : 시간개념(한국의 시간은 +9, UTC + 9)
+    - SUBSTR의 결과는 문자형 이므로 문자로 비교, EXTRACT의 결과는 숫자이므로 숫자로 비교
+
+### 형변환
+- CAST(expr AS type) : 명시적으로 형 변환
+    - 날짜형태로 작성한 문자를 날짜 타입으로 변환 -> CAST('0000-00-00' AS DATE)
+- TO_CHAR : 숫자, 문자, 날짜를 지정한 형식의 문자열 반환, 문자를 날짜형식의 문자로 못바꿈, 날짜를 날짜형식의 문자로 바꿀 수 있음
+    - (char) : CHAR, CLOB 타입을 VARCHAR2로 변환
+    - (date,fmt) : 날짜를 특정 형식의 문자열로 반환
+    - (number, fmt) : 숫자를 특정 형식의 문자열로 반환
+    - 숫자 FORMAT
+        - 9 : 출력형식의 자리, 유효한 숫자인 경우 출력
+        - 0 : 출력형식의 자리, 무효한 숫자인 경우 0 출력
+        - $,L : 달러 및 지역 화폐기호
+        - MI : 음수인 경우 우층에 마이너스 표시
+        - PR : 음수인 경우 "<>" 괄호로 묶음
+        - , . : 해당위치에 표시
+        - X : 해당 숫자 16진수로 출력
+- TO_NUMBER (char, fmt): 숫자형식의 문자열을 숫자로 반환, char에 ￦이나 , 같은 문자가 포함 되어있는 숫자 형식이면 fmt에 형식을 명확히 기재
+    - 문자는 왼쪽 정렬, 숫자는 오른쪽 정렬
+- TO_DATE : 날짜형식의 문자열을 날짜로 반환
+- CLOB : Character Large Object,문자열 입력, 4GB
+- BLOB : Binary Large Object, 이미지 동영상 등 바이너리 파일 데이터 입력, 4GB(비추)
