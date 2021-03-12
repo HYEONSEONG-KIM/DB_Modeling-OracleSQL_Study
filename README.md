@@ -12,3 +12,4 @@
 - [DDL&DML](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/DDL%26DML.md)
 - [정렬&연산자](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/%EC%A0%95%EB%A0%AC%26%EC%97%B0%EC%82%B0%EC%9E%90.md)
 - [함수](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/%ED%95%A8%EC%88%98.md)
+- [Join](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/JOIN.md)
