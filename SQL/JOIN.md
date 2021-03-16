@@ -19,3 +19,4 @@
 - Outer Join 사용시 LEFT, RIGHT 구분
     - FROM A LEFT(RIGHT) OUTER JOIN B(조건)
     - FROM A FULL JOIN B ON(조건) => 둘다
+    - OUTER JOIN에 조건(날짜, 특정ID 등등)은 ON 안에 넣어야 함
