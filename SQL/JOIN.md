@@ -20,3 +20,5 @@
     - FROM A LEFT(RIGHT) OUTER JOIN B(조건)
     - FROM A FULL JOIN B ON(조건) => 둘다
     - OUTER JOIN에 조건(날짜, 특정ID 등등)은 ON 안에 넣어야 함
+- Self Join : Table Alias를 사용하여 마치 2개의 Table처럼 자신의 Table과 자신의 Table을 Join하여 검색
+    - FROM (자신의 테이블) A, (자신의 테이블) B
