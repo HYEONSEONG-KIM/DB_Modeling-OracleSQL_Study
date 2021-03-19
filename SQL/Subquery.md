@@ -9,6 +9,7 @@
 - MAIN QUERY가 실행되기 전에 한 번 실행
 - DML문과 CREATE TABLE 또는 VIEW에서 사용
 - 알려지지 않은 조건에 근거한 값들을 검색하는 SELECT 문장을 작성하는데 유용
+- 상관관계  서브쿼리(Correlated Subqueries) : 바깥쪽 쿼리의 컬럼 중의 하나가 안쪽 서브쿼리의 조건에 이용되고, 그 결과는 다시 바깥쪽 쿼리에 영향을 주는 처리 방식
 
 
 
@@ -21,9 +22,12 @@
 
 ## 행과 열에 따른 SUBQUERY
 - 단일 행(Sing-Row) 서브쿼리 : SELECT문장으로부터 오직 하나의 행만을 검색하는 질의
+    - 단일 행 연산자(=,>, >=, <, <=, <>, !=) 
 - 다중 행(Multiple-Row) 서브쿼리 : SELECT문장으로부터 하나 이상의 행을 검색하는 질의
+    - 다중 행 연산자(IN, NOT IN, ANY, ALL, EXISTS)
+        - ANY : OR의 의미
+        - ALL : AND의 이미
  - 다중 열(Multiple-Column) 서브쿼리 : SELECT문장으로부터 하나 이상의 컬럼을 검색하는 질의
 - FROM절상의 서브쿼리(INLINE VIEW) : FROM절상에 오는 서브쿼리로 VIEW처럼 작용
  - 상관관계 서브 쿼리 : 바깥쪽 쿼리의 컬럼 중의 하나가 안쪽 서브쿼리의 조건에 이용되는 처리 방식
- - 단일 행 연산자(=,>, >=, <, <=, <>, !=) 
- - 복수 행 연산자(IN, NOT IN, ANY, ALL, EXISTS)
+
