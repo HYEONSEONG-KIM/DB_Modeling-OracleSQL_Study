@@ -28,6 +28,10 @@
 # DML
 - INSERT : 데이어 삽입, INTO : 삽입될 테이블 지정
     - INSERT INTO <테이블명>(속성) VALUES(넣을 값들);
+    - 데이터의 개수와 컬럼의 개수가 같은경우 컬럼 생략가능(되도록이면 컬럼도 함께 작성)
+    - NULL값 입력
+        - 속성을 비워두고 값 삽입시 위치에 대응되게 입력
+        - 속성을 모두 적고 값 삽입에 NULL 혹은 ''(오라클에서만 NULL로 인식)
 - SELECT : 데이터 조회
     - SELCET {DISTINCT-중복제거} <데이터목록> FROM <테이블 목록> WHERE <검색조건>;
     - GROUP BY <열목록> : 집계할 때 사용(SUM,AVG,MAX,MIN,COUNT)
