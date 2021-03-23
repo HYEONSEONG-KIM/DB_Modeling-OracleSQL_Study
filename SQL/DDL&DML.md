@@ -46,6 +46,9 @@
     - SET : 새로운 데이터 갱신
     - WHERE : 갱신하기 원하는 데이터의 검색 조건(행 필터)
     - 반드시 WHERE 조건 넣기
+    - 두개의 테이블을 EXISTS를 사용한후 UPDATE
+        - 두개의 테이블을 EXISTS로 묶어 원하는 조건의 테이블 검증(EXISTS 위의 테이블에 범위가 크고 수정을 원하는 속성값 포함)
+        - 위 테이블의 FROM 위치에 UPDATE, 수정하고자 하는 컬럼 SET으로 수정, 나머지 위의 구문 삭제
 - DELETE : 데이터 삭제
     - ROLLBAKC 가능
     - DELETE FROM (테이블명) WHERE (조건)
