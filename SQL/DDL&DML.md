@@ -5,6 +5,7 @@
         ....
         CONSTRAINT {제약어} PRIMARY KEY(기본 키)
     );
+    - CREATE TABLE (테이블명) AS SELECT * FROM (복사하고자하는 테이블명) => 테이블 데이터 복사해서 새로 생성 가능
 - ALTER : 구조 변경
     - ALTER TABLE <테이블명> ADD(Constraint 인덱스키명 Primary Key(필드명1,필드명2), Constraint 외부키명 Foreign key (필드명2) References 외부테이블명(외부필드명)  );  -> 키설정
     - ALTER TABLE :    
@@ -47,3 +48,6 @@
     - 반드시 WHERE 조건 넣기
 - DELETE : 데이터 삭제
     - ROLLBAKC 가능
+    - DELETE FROM (테이블명) WHERE (조건)
+    - 실수로 DELETE후 COMMIT 하였을때 
+        - INSERT INTO (테이블명) SELECT * FROM (테이블명) AS OF TIMESTAMP (SYSTIMESTAMP - INTERVAL '10' MINUTE) => 10분전 삭제하였으면 복구 가능
