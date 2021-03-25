@@ -25,3 +25,10 @@
 - WHILE…END LOOP , LOOP…END LOOP , FOR…END LOOP : 반복문
 - EXIT : 반복 블록을 빠져나간다
 - GOTO : 처리 순서 변경하기
+
+
+## 변수
+- SCALAR 변수 : 일반적인 변수(크기 설정 해줘야함)
+- REFERENCES 변수 : 테이블명.컬럼명%TYPE;
+- BIND 변수 : 파라미터의 값을 담는 변수(크기 설정 안함)
+- COMPOSITE 변수 : 배열 변수
