@@ -15,3 +15,4 @@
 - [Join](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/JOIN.md)
 - [Subquery](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/Subquery.md)
 - [객체](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/%EA%B0%9D%EC%B2%B4.md)
+- [PL/SQL](https://github.com/HYEONSEONG-KIM/DB_Modeling-OracleSQL_Study/blob/main/SQL/PL%2CSQL.md)
